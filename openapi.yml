@@ -1,0 +1,19 @@
+openapi: 3.0.1
+info:
+  title: reports API
+  description: API to return reports in CSV format
+  version: 1.0.0
+paths:
+  /reports:
+    get:
+      summary: Get report in CSV format
+      responses:
+        '200':
+          description: CSV report
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '500':
+          description: Internal server error
