@@ -5,6 +5,7 @@
   ],
   "routes": [
     { "src": "/api/", "dest": "/api/index.go"},
-    { "src": "/api/reports", "dest": "/api/reports.go"}
+    { "src": "/api/reports", "dest": "/api/reports.go"},
+    { "src": "/api/mostPurchasedItem", "dest": "/api/most_purchased.go"}
   ]
 }
