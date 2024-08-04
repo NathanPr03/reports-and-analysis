@@ -17,3 +17,21 @@ paths:
                 format: binary
         '500':
           description: Internal server error
+  /mostPurchasedItem:
+    get:
+      summary: Get most purchased item
+      responses:
+        '200':
+          description: Most purchased item
+          content:
+              application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                      productName:
+                        type: string
+                      amountPurchased:
+                        type: integer
+                        format: int32
