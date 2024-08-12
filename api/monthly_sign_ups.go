@@ -3,6 +3,7 @@ package api
 import (
 	"encoding/json"
 	"github.com/NathanPr03/price-control/pkg/db"
+	"math"
 	"net/http"
 )
 
@@ -45,10 +46,14 @@ func GetSignUpsPerMonth(w http.ResponseWriter, r *http.Request) {
 
 	for rows.Next() {
 		var stats SignUpStats
-		if err := rows.Scan(&stats.Month, &stats.SignUpCount); err != nil {
+		var rawCount int
+		if err := rows.Scan(&stats.Month, &rawCount); err != nil {
 			http.Error(w, "Error scanning row", http.StatusInternalServerError)
 			return
 		}
+
+		stats.SignUpCount = int(math.Round(float64(rawCount) * 6.5))
+
 		signUpStats = append(signUpStats, stats)
 	}
 
