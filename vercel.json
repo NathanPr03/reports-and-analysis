@@ -6,6 +6,7 @@
   "routes": [
     { "src": "/api/", "dest": "/api/index.go"},
     { "src": "/api/reports", "dest": "/api/reports.go"},
-    { "src": "/api/mostPurchasedItem", "dest": "/api/most_purchased.go"}
+    { "src": "/api/mostPurchasedItem", "dest": "/api/most_purchased.go"},
+    { "src": "/api/monthlySignUps", "dest": "/api/monthly_sign_ups.go"}
   ]
 }
