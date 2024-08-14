@@ -17,3 +17,66 @@ paths:
                 format: binary
         '500':
           description: Internal server error
+  /mostPurchasedItem:
+    get:
+      summary: Get most purchased item
+      responses:
+        '200':
+          description: Most purchased item
+          content:
+              application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                      productName:
+                        type: string
+                      amountPurchased:
+                        type: integer
+                        format: int32
+  /monthlySignUps:
+    get:
+      summary: Retrieve customer sign-ups per month
+      description: Returns the number of customer sign-ups aggregated by month.
+      responses:
+        '200':
+          description: A list of sign-ups per month
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    month:
+                      type: string
+                      description: The month of the sign-ups in YYYY-MM format.
+                      example: "2024-08"
+                    sign_up_count:
+                      type: integer
+                      description: The number of sign-ups in the given month.
+                      example: 15
+        '500':
+          description: Server error, unable to retrieve data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Error connecting to database"
+  components:
+    schemas:
+      SignUpStats:
+        type: object
+        properties:
+          month:
+            type: string
+            description: The month of the sign-ups in YYYY-MM format.
+            example: "2024-08"
+          sign_up_count:
+            type: integer
+            description: The number of sign-ups in the given month.
+            example: 15
